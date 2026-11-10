@@ -15,7 +15,7 @@ class SiteNavbar extends HTMLElement {
                 <div class="container-fluid">
                     <a class="navbar-brand" href="/">
                         <img src="/images/hikelogo.png" height="36">
-                        Hoda Hikes
+                        Malik's Hikes
                     </a>
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
                         aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -26,6 +26,8 @@ class SiteNavbar extends HTMLElement {
                             <li class="nav-item">
                                 <a class="nav-link" href="/">Home</a>
                             </li>
+                            <li class="nav-item"><a class="nav-link" href="/addHike.html">Add hike</a></li>
+<li class="nav-item"><a class="nav-link" href="/profile.html">Profile</a></li>
                         </ul>
                         <div class="d-flex align-items-center gap-2 ms-lg-2" id="rightControls">
                             <form class="d-flex align-items-center gap-2 my-2 my-lg-0" id="navSearch" role="search">
