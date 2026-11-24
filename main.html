@@ -38,8 +38,13 @@
     </div>
 
 
-        <div class="container-fluid bg-body text-dark p-5">
-        <h1>Popular Hikes</h1>
+    <div class="container-fluid bg-body text-dark p-5">
+        <div class="d-flex justify-content-between align-items-center mb-3">
+            <h1 class="mb-0">Popular Hikes</h1>
+            <a href="addHike.html" class="btn btn-primary">
+                <i class="bi bi-plus-lg me-1"></i>Add a Hike
+            </a>
+        </div>
         <div id="hikes-go-here" class="row">
         </div>
     </div>
@@ -49,6 +54,8 @@
         <div class="col">
             <div class="card">
                 <img class="card-img-top card-image" src="..." alt="Hike Image">
+                <i class="bi bi-heart text-danger fs-4 fav-btn position-absolute top-0 end-0 m-2" role="button"
+                    title="Favourite"></i>
                 <div class="card-body">
                     <h5 class="card-title"></h5>
                     <p class="card-text"></p>
