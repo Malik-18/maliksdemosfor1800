@@ -1,1 +1,77 @@
+@import url('https://fonts.googleapis.com/css2?family=Google+Sans:ital,opsz,wght@0,17..18,400..700;1,17..18,400..700&family=Playwrite+AU+SA+Guides&display=swap');
 
+
+/* New Color Palette:
+ * Beige(Background):               #BFD7EA      
+ * Dark Green (Primary):            #91AEC1
+    Light Blue    (Secondary):        #508CA4  
+ * Light Green (Accent):         #0A8754
+ * Dark Green (Accent):          #004F2D
+*/
+
+
+
+
+:root {
+    /* ---------- 1. Our design palette ----------
+       Same variable names for everyone. Global.
+       Customize colours and font HERE only. */
+
+
+    /* 60% Background */
+    --background: #BFD7EA;
+
+
+    /* 30% Primary and secondary */
+    --primary: #91AEC1;
+    --secondary: #508CA4;
+
+
+    /* 10% Accent */
+    --accent: #0A8754;
+
+
+    /* Font (import from Google Fonts first) */
+    --font: "Playwrite AU SA Guides", system-ui, sans-serif;
+
+
+    /* ---------- 2. Bootstrap variables ----------
+       Connect Bootstrap to OUR design choices. */
+
+
+    /* Page background */
+    --bs-body-bg: var(--background);
+
+
+    /* Font for the whole page */
+    --bs-body-font-family: var(--font);
+}
+
+
+/* ---------- 3. Bootstrap colour utilities ----------
+   Override Bootstrap's default colours with OUR colours.
+   !important is needed to override Bootstrap utilities. */
+
+
+.bg-primary {
+    background-color: var(--primary) !important;
+}bs-
+.text-primary {
+    color: var(--primary) !important;
+}
+
+
+.bg-secondary {
+    background-color: var(--secondary) !important;
+}
+
+
+.text-secondary {
+    color: var(--secondary) !important;
+}
+
+
+/* Use for badges and small highlights. */
+.bg-accent {
+    background-color: var(--accent);
+}

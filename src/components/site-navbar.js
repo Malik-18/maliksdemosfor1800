@@ -1,21 +1,22 @@
-// Import Firebase authentication tools
-import { logoutUser , onAuthReady} from '/src/authentication.js';   // Our function to log out the user
+import { logoutUser, onAuthReady } from '/src/authentication.js';   // Our function to log out the user
+
 
 class SiteNavbar extends HTMLElement {
     constructor() {
         super();
         this.renderNavbar();
-        this.renderAuthControls(); 
+        this.renderAuthControls();
     }
+
 
     renderNavbar() {
         this.innerHTML = `
             <!-- Navbar: single source of truth -->
-            <nav class="navbar navbar-expand-lg navbar-light bg-warning">
+            <nav class="navbar navbar-expand-lg bg-primary" data-bs-theme="dark">
                 <div class="container-fluid">
                     <a class="navbar-brand" href="/">
-                        <img src="/images/hikelogo.png" height="36">
-                        Malik's Hikes
+                        <img src="/public/images/drink1.png" height="36">
+                        Trying New Things
                     </a>
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
                         aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -26,8 +27,6 @@ class SiteNavbar extends HTMLElement {
                             <li class="nav-item">
                                 <a class="nav-link" href="/">Home</a>
                             </li>
-                            <li class="nav-item"><a class="nav-link" href="/addHike.html">Add hike</a></li>
-<li class="nav-item"><a class="nav-link" href="/profile.html">Profile</a></li>
                         </ul>
                         <div class="d-flex align-items-center gap-2 ms-lg-2" id="rightControls">
                             <form class="d-flex align-items-center gap-2 my-2 my-lg-0" id="navSearch" role="search">
@@ -39,6 +38,7 @@ class SiteNavbar extends HTMLElement {
                             </div>
                         </div>
 
+
                     </div>
                 </div>
             </nav>
@@ -49,26 +49,32 @@ class SiteNavbar extends HTMLElement {
  * Updates automatically when the user's login status changes.
  * Uses callbacks to detect auth changes and handle the Log out button click.
  */
-renderAuthControls() {
-    const authControls = this.querySelector('#authControls'); // Find #authControls inside this navbar
+    renderAuthControls() {
+        const authControls = this.querySelector('#authControls'); // Find #authControls inside this navbar
 
-    // Invisible placeholder prevents layout shifting while Firebase checks login status
-    authControls.innerHTML = `<div class="btn btn-outline-light" style="visibility: hidden; min-width: 80px;">Log out</div>`;
 
-    // Pass a callback that runs when Firebase reports the login status
-    onAuthReady(function(user) { // Receives the user object (or null)
+        // Invisible placeholder prevents layout shifting while Firebase checks login status
+        authControls.innerHTML = `<div class="btn btn-outline-light" style="visibility: hidden; min-width: 80px;">Log out</div>`;
 
-        if (user) { // User is logged in
-            authControls.innerHTML = `<button class="btn btn-outline-light" id="signOutBtn" type="button" style="min-width: 80px;">Log out</button>`;
 
-            const signOutBtn = authControls.querySelector('#signOutBtn');
-            signOutBtn.addEventListener('click', logoutUser); // Callback: runs when Log out is clicked
+        // Pass a callback that runs when Firebase reports the login status
+        onAuthReady(function (user) { // Receives the user object (or null)
 
-        } else { // User is NOT logged in, and gets redirected to login page if user clicks the login button
-            authControls.innerHTML = `<a class="btn btn-outline-light" id="loginBtn" href="/login.html" style="min-width: 80px;">Log in</a>`;
-        }
-    });
+
+            if (user) { // User is logged in
+                authControls.innerHTML = `<button class="btn btn-outline-light" id="signOutBtn" type="button" style="min-width: 80px;">Log out</button>`;
+
+
+                const signOutBtn = authControls.querySelector('#signOutBtn');
+                signOutBtn.addEventListener('click', logoutUser); // Callback: runs when Log out is clicked
+
+
+            } else { // User is NOT logged in, and gets redirected to login page if user clicks the login button
+                authControls.innerHTML = `<a class="btn btn-outline-light" id="loginBtn" href="/login.html" style="min-width: 80px;">Log in</a>`;
+            }
+        });
+    }
 }
-}
+
 
 customElements.define('site-navbar', SiteNavbar);
